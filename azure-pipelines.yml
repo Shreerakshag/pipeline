@@ -1,6 +1,9 @@
-- task: AppCenterTest@1
-  inputs:
-    artifactsDirectory: '$(Build.ArtifactStagingDirectory)/AppCenterTest'
-    frameworkOption: 'appium'
-    credentialsOption: 'serviceEndpoint'
-    localeOption: 'en_US'
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
