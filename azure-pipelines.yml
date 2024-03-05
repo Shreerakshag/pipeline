@@ -1,9 +1,13 @@
-trigger:
-- main
-
-pool:
-  vmImage: 'ubuntu-latest'
-
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- task: AzureRmWebAppDeployment@4
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'build'
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Visual Studio Enterprise Subscription – MPN(65416f87-c336-4ab3-a2ef-eadad49a1dfb)'
+    appType: 'webApp'
+    WebAppName: 'shree-webapp'
+    deployToSlotOrASE: true
+    ResourceGroupName: 'shree-RG'
+    SlotName: 'production'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
